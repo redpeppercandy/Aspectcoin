@@ -1,3 +1,2 @@
-# ASPECTCOIN
-Source code for Aspectcoin
+# ASPECTCOIN SOURCE CODE
 https://www.aspectcoin.org
