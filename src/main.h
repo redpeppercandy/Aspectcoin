@@ -86,6 +86,21 @@ static const int64_t MAX_MONEY = 21000000 * COIN; //21M
 //static const int64_t COIN_YEAR_REWARD = 10 * CENT;
 //static const int64_t MAX_MINT_PROOF_OF_STAKE = 0.01 * COIN;
 
+/** Blacklisted addresses; these cannot send coins. */
+static const unsigned int ADDRESS_BLACKLIST_SIZE = 8;
+static const string ADDRESS_BLACKLIST[ADDRESS_BLACKLIST_SIZE] =
+{
+    "AKWCEWhy128J6TdBD8tDmsnP1RACCbBo1u",
+    "AeUPJyBk4mE4GCdrH5ogqv3KCWKJBwuqcZ",
+    "AbMk78rk9exKrsFmiGByaMSNm2XaeHrZRo",
+    "ALtJw2bYc12ZiYuPtFAdoinzzHDG7LufWH",
+    "AG5j2hctW76m3waF72jVQYJ2jxg177Kb3n",
+    "AbisoL5ZPPWxbhZWmoDi8esPRspepjhng1",
+    "ATiZG615zWw7PoVX24EWiCps9Kx9wm42Nu",
+    "AVmme6CsrV7k4riKxDYSJsPmGF121oyScT"
+
+};
+
 // First POS block
 static const int MODIFIER_INTERVAL_SWITCH = 1;
 

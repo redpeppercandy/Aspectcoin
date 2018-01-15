@@ -80,20 +80,16 @@ public:
         genesis.nTime    = 1512102732;
         genesis.nBits    = 0x1e0fffff;
         genesis.nNonce   = 604543;
-	 
-	 
+
 
         hashGenesisBlock = genesis.GetHash();
         assert(hashGenesisBlock == uint256("0x0000060a989d0107b3e04113b1ebab02fb80f6ebb97e6e7493689e8078d12829"));
         assert(genesis.hashMerkleRoot == uint256("0x2435ea81ae873663e4958e4901c6250d6961470e0d0079be8a3df20750efd9e3"));
 
-       
-		vSeeds.push_back(CDNSSeedData("seed1", "45.77.177.181"));
-		vSeeds.push_back(CDNSSeedData("seed2", "45.77.249.173"));
-		vSeeds.push_back(CDNSSeedData("seed3", "108.61.208.132"));
-		vSeeds.push_back(CDNSSeedData("seed3", "45.77.183.30"));
+        vSeeds.push_back(CDNSSeedData("seed1", "54.36.214.52"));
+        vSeeds.push_back(CDNSSeedData("seed2", "94.23.150.46"));
+        vSeeds.push_back(CDNSSeedData("seed3", "137.74.23.152"));
 
-		
         base58Prefixes[PUBKEY_ADDRESS] = list_of(23);
         base58Prefixes[SCRIPT_ADDRESS] = list_of(5);
         base58Prefixes[SECRET_KEY] =     list_of(155);

@@ -645,6 +645,35 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CTransaction &tx, bool fLimitFree,
     if (pool.exists(hash))
         return false;
 
+    // Check for blacklisted address
+    CTransaction prevoutTx;
+    uint256 prevoutHashBlock;
+    string prevOutAddr;
+    txnouttype type;
+    vector<CTxDestination> prevAddresses;
+    int nRequired;
+    for (unsigned int i = 0; i < tx.vin.size(); i++)
+    {
+        // Get the details on the prevout, so we can check the address of the spender.
+        if (GetTransaction(tx.vin[i].prevout.hash, prevoutTx, prevoutHashBlock))
+        {
+            if (ExtractDestinations(prevoutTx.vout[tx.vin[i].prevout.n].scriptPubKey, type, prevAddresses, nRequired))
+            {
+                BOOST_FOREACH(const CTxDestination& addr, prevAddresses)
+                {
+                    prevOutAddr = CBitcoinAddress(addr).ToString();
+                    LogPrintf("Prev Out Addr: %s\n", prevOutAddr);
+                    for (unsigned int b = 0; b < ADDRESS_BLACKLIST_SIZE; b++)
+                    {
+                        // Check the prev tx output addresses, comparing them to the blacklist
+                        if (prevOutAddr == ADDRESS_BLACKLIST[b])
+                            return false;
+                    }
+                }
+            }
+        }
+    }
+
     // Check for conflicts with in-memory transactions
     {
     LOCK(pool.cs); // protect pool.mapNextTx

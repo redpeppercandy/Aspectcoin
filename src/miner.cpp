@@ -368,7 +368,7 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, int64_t* pFe
         pblock->nTime          = max(pindexPrev->GetPastTimeLimit()+1, pblock->GetMaxTransactionTime());
         if (!fProofOfStake)
             pblock->UpdateTime(pindexPrev);
-        pblock->nNonce         = 0;
+        pblock->nNonce         = 1;
     }
 
     return pblock.release();
