@@ -662,7 +662,6 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CTransaction &tx, bool fLimitFree,
                 BOOST_FOREACH(const CTxDestination& addr, prevAddresses)
                 {
                     prevOutAddr = CBitcoinAddress(addr).ToString();
-                    LogPrintf("Prev Out Addr: %s\n", prevOutAddr);
                     for (unsigned int b = 0; b < ADDRESS_BLACKLIST_SIZE; b++)
                     {
                         // Check the prev tx output addresses, comparing them to the blacklist
